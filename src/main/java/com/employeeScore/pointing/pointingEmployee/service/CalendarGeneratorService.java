@@ -1,6 +1,7 @@
 package com.employeeScore.pointing.pointingEmployee.service;
 
 import com.employeeScore.pointing.pointingEmployee.model.CalendarEntry;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.DayOfWeek;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class CalendarGeneratorService {
 
     @Autowired
