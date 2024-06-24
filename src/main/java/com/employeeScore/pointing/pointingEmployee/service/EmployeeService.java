@@ -38,7 +38,8 @@ public class EmployeeService {
         // Calcul des heures de travail pour Rakoto et Rabe selon le scénario C
         int workDays = daysInMonth / 7 * workDaysPerWeek;
         int totalWorkHours = dailyHours * workDays;
-        int overtimeHours = Math.max(totalWorkHours - dailyHours * 7 * overtimeThreshold, 0);
+        int overtimeHours = Math.max(totalWorkHours - dailyHours * 7 * overtimeThreshold, 16);
+
 
         // Calcul du paiement pour les heures normales
         double normalPay = calculateNormalPay(totalWorkHours, overtimeThreshold);
