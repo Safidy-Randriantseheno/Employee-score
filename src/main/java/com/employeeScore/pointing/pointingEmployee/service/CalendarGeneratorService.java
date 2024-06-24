@@ -1,5 +1,6 @@
 package com.employeeScore.pointing.pointingEmployee.service;
 
+import com.employeeScore.pointing.pointingEmployee.model.CalendarEntry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.DayOfWeek;
@@ -18,11 +19,9 @@ public class CalendarGeneratorService {
     public List<CalendarEntry> generateCalendar() {
         List<CalendarEntry> calendar = new ArrayList<>();
 
-        // Définition du mois et de l'année
-        int month = 6; // juin
+        int month = 6;
         int year = 2024;
 
-        // Début et fin du mois
         LocalDate startDate = LocalDate.of(year, month, 1);
         LocalDate endDate = startDate.plusMonths(1).minusDays(1);
 
@@ -32,14 +31,11 @@ public class CalendarGeneratorService {
             DayOfWeek dayOfWeek = date.getDayOfWeek();
             boolean isHoliday = holidayService.isHoliday(date);
 
-            // Déterminer le type d'employé en fonction du jour de la semaine
             String employeeType = determineEmployeeType(dayOfWeek);
 
-            // Créer une entrée de calendrier
             CalendarEntry entry = new CalendarEntry(date, dayOfWeek, employeeType, isHoliday);
             calendar.add(entry);
 
-            // Passer à la prochaine journée
             date = date.plusDays(1);
         }
 
