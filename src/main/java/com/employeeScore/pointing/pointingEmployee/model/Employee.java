@@ -1,4 +1,4 @@
-package com.employeeScore.pointing.pointingEmployee.controller;
+package com.employeeScore.pointing.pointingEmployee.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
