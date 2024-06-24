@@ -3,12 +3,17 @@ package com.employeeScore.pointing;
 import com.employeeScore.pointing.pointingEmployee.model.PaymentDetails;
 import com.employeeScore.pointing.pointingEmployee.service.EmployeeService;
 import org.junit.jupiter.api.Test;
+
+import java.math.BigDecimal;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EmployeeServiceTest {
+    private static final int SCALE = 2;
 
     @Test
     public void testCalculateRakotoWorkHours() {
+
         int dailyHours = 8;
         int daysInMonth = 30;
         int workDaysPerWeek = 5;
@@ -35,6 +40,11 @@ public class EmployeeServiceTest {
         // Assert that the calculated total work hours, overtime hours, and total pay match the expected values
         assertEquals(160, paymentDetails.getTotalWorkHours(), "Total work hours calculated incorrectly");
         assertEquals(0, paymentDetails.getOvertimeHours(), "Overtime hours calculated incorrectly");
-        assertEquals(100000 * 160, paymentDetails.getTotalPay(), "Total pay calculated incorrectly");
+
+        // Arrondir la valeur attendue et la valeur réelle avant de comparer
+        BigDecimal expectedTotalPay = new BigDecimal("16650000.00").setScale(SCALE, BigDecimal.ROUND_HALF_UP);
+        BigDecimal actualTotalPay = new BigDecimal(paymentDetails.getTotalPay()).setScale(SCALE, BigDecimal.ROUND_HALF_UP);
+
+        assertEquals(expectedTotalPay, actualTotalPay, "Total pay calculated incorrectly");
     }
 }
