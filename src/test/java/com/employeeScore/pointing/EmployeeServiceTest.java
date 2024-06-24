@@ -64,7 +64,6 @@ public class EmployeeServiceTest {
         PaymentDetails paymentDetails = employeeService.calculateWorkAndPaymentForScenarioC(dailyHours, daysInMonth, workDaysPerWeek,
                 overtimeThreshold, nightHours, sundayHours, holidayHours);
 
-        // Assertions pour vérifier les résultats
         assertEquals(160, paymentDetails.getTotalWorkHours(), "Total work hours are incorrect");
         assertEquals(16, paymentDetails.getOvertimeHours(), "Overtime hours are incorrect");
         assertEquals(2080000.0, paymentDetails.getTotalPay(), "Total pay is incorrect");
